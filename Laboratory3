@@ -1,0 +1,27 @@
+def check_loan_eligibility():
+    print("Welcome to the Loaning System")
+
+    monthly_salary = float(input("Please enter your monthly salary (in peso): "))
+    loan_amount = float(input("How much money would you like to borrow? "))
+
+    if monthly_salary < 30000:
+        print("\nUnfortunately, you're not approved for the loan because your monthly salary is too low.")
+        print("We require a minimum salary of P30.000.00 to proceed.")
+        return
+    elif loan_amount > monthly_salary * 10:
+        print("\nUnfortunately, you're not approved for the loan because the requested loan amount exceeds our limits.")
+        print(f"The maximum loan amount you can request is P{monthly_salary * 10:.2f}.")
+        return
+
+    months_to_pay = int(input("\nGreat! You're eligible for the loan. How many months do you plan to pay it back? "))
+
+    interest_rate = 0.10 
+    total_amount_to_pay = loan_amount * (1 + interest_rate)
+    
+    monthly_payment = total_amount_to_pay / months_to_pay
+    
+    print("\nHere's the breakdown of your loan:")
+    print(f"Total amount to be paid (including interest): P{total_amount_to_pay:.2f}")
+    print(f"Monthly payment for {months_to_pay} months will be: P{monthly_payment:.2f}")
+
+check_loan_eligibility()
